@@ -1,0 +1,50 @@
+import discord 
+from discord.ext import commands
+client = commands.Bot(command_prefix="#")
+
+@client.command()
+async def support(ctx):
+  await ctx.send("Join Our support server - https://discord.gg/RYCYgRnkgP")
+
+@client.command(aliases=['c'])
+@commands.has_permissions(manage_messages = True)
+async def clear(ctx,amount=5):
+  await ctx.channel.purge(limit = amount)
+
+@client.command(aliases=['k'])
+@commands.has_permissions(kick_members = True)
+async def kick(ctx,member : discord.Member,*,reason= "Reason Not Provided"):
+  await member.send("You Have Been kicked from Server, Because: "+reason)
+  await member.kick(reason=reason)
+
+@client.command(aliases=['b'])
+@commands.has_permissions(ban_members = True)
+async def ban(ctx,member : discord.Member,*,reason= "Reason Not Provided"):
+  await ctx.send(member.name + " has Been BANNED from Server, Because: "+reason)
+  await member.ban(reason=reason)
+
+@client.command(aliases=['m'])
+@commands.has_permissions(manage_messages=True)
+async def mute(ctx,member : discord.Member):
+  muted_role = ctx.guild.get_role(840877427402997780)
+
+  await member.add_roles(muted_role)
+
+  await ctx.send(member.mention + " Has Been Muted")
+
+@client.command(aliases=['um'])
+@commands.has_permissions(manage_messages=True)
+async def unmute(ctx,member : discord.Member):
+  muted_role = ctx.guild.get_role(840877427402997780)
+
+  await member.remove_roles(muted_role)
+
+  await ctx.send(member.mention + " Has Been Unmuted")
+
+@client.event
+async def on_ready():
+  activity = discord.Game(name="Mixie|Bot Made by NixonXC", type=3)
+  await client.change_presence(status=discord.Status.do_not_disturb, activity=activity)
+  print("Mixie is now Ready!!")
+
+client.run("ODM1MDc0MzMyODIwNTA0NjE2.YIKJkw.BcJMtJjPuWYBIl91Ff0chzYpZaA")

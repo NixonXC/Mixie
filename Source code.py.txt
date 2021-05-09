@@ -47,4 +47,4 @@ async def on_ready():
   await client.change_presence(status=discord.Status.do_not_disturb, activity=activity)
   print("Mixie is now Ready!!")
 
-client.run("ODM1MDc0MzMyODIwNTA0NjE2.YIKJkw.BcJMtJjPuWYBIl91Ff0chzYpZaA")
+client.run("Your Bot Token")

@@ -1,10 +1,45 @@
 import discord 
 from discord.ext import commands
+
 client = commands.Bot(command_prefix="#")
+client.remove_command("help")
+
+@client.group(invoke_without_command=True)
+async def help(ctx):
+  em = discord.Embed(title = "Help", descreption = "Use #help <command> for extended information on a command.",color = ctx.author.color)
+
+  em.add_field(name = "Moderation", value = "'kick','ban','mute','unmute'")
+  em.add_field(name = "About", value = "'version','support','sourcecode','AboutEm'")
+
+  await ctx.send(embed = em)
+
+@client.group(invoke_without_command=True)
+async def AboutEm(ctx):
+  em = discord.Embed(title = "About", descreption = "Use #help <command> for extended information on a command.",color = ctx.author.color)
+
+  em.add_field(name = "Mixie About", value = "'support','sourcecode','About'")
+
+  await ctx.send(embed = em)
+
+@client.command()
+async def About(ctx):
+  await ctx.send("A Simple Moderation Bot Made by NixonXC 100% open source and you can join our support server do #support :)")
 
 @client.command()
 async def support(ctx):
   await ctx.send("Join Our support server - https://discord.gg/RYCYgRnkgP")
+
+@client.command()
+async def sourcecode(ctx):
+  await ctx.send("Join The Server for the GitHub Link :) - https://discord.gg/NpYE3PqvRf and if too many members joined and leaved i will remove the bot from github and i will change the source code :)")
+
+@client.command()
+async def version(ctx):
+  await ctx.send("version - 1.1 Release")
+
+@client.command()
+async def dev(ctx):
+  await ctx.send("Bot Made By NixonXC")
 
 @client.command(aliases=['c'])
 @commands.has_permissions(manage_messages = True)
@@ -43,7 +78,7 @@ async def unmute(ctx,member : discord.Member):
 
 @client.event
 async def on_ready():
-  activity = discord.Game(name="Mixie|Bot Made by NixonXC", type=3)
+  activity = discord.Game(name="Mixie|Bot Made by NixonXC #help", type=3)
   await client.change_presence(status=discord.Status.do_not_disturb, activity=activity)
   print("Mixie is now Ready!!")
 

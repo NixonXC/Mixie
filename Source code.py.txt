@@ -61,7 +61,7 @@ async def ban(ctx,member : discord.Member,*,reason= "Reason Not Provided"):
 @client.command(aliases=['m'])
 @commands.has_permissions(manage_messages=True)
 async def mute(ctx,member : discord.Member):
-  muted_role = ctx.guild.get_role(840877427402997780)
+  muted_role = ctx.guild.get_role(Your Role ID)
 
   await member.add_roles(muted_role)
 
@@ -70,7 +70,7 @@ async def mute(ctx,member : discord.Member):
 @client.command(aliases=['um'])
 @commands.has_permissions(manage_messages=True)
 async def unmute(ctx,member : discord.Member):
-  muted_role = ctx.guild.get_role(840877427402997780)
+  muted_role = ctx.guild.get_role(Your Role ID)
 
   await member.remove_roles(muted_role)
 

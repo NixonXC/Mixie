@@ -5,6 +5,30 @@ from prsaw import RandomStuff
 client = commands.Bot(command_prefix=">")
 client.remove_command("help")
 
+@client.group(invoke_without_command=True)
+async def verified(ctx):
+  em = discord.Embed(title = "VERIFY✅", descreption = "Use >help <command> for extended information on a command.",color = ctx.author.color)
+
+  em.add_field(name = "Verify That You Are a Real Person", value = " To Verify do >verify @YourName")
+
+  await ctx.send(embed = em)
+
+@client.command(aliases=['v'])
+async def verify(ctx,member : discord.Member):
+  muted_role = ctx.guild.get_role(843873047648010340)
+
+  await member.add_roles(muted_role)
+
+  await ctx.send(member.mention + " Is Now Verified")
+
+@client.command(aliases=['uv'])
+async def unverify(ctx,member : discord.Member):
+  muted_role = ctx.guild.get_role(843873047648010340)
+
+  await member.remove_roles(muted_role)
+
+  await ctx.send(member.mention + " Is Now UnVerified")
+
 rs  = RandomStuff(async_mode = True)
 
 @client.event
@@ -12,7 +36,7 @@ async def on_message(message):
   if client.user == message.author:
      return
 
-  if message.channel.id == Your Channel Token:
+  if message.channel.id == 843516891010957322:
     response = await rs.get_ai_response(message.content)
     await message.reply(response)
 
@@ -92,7 +116,7 @@ async def ban(ctx,member : discord.Member,*,reason= "Reason Not Provided"):
 @client.command(aliases=['m'])
 @commands.has_permissions(manage_messages=True)
 async def mute(ctx,member : discord.Member):
-  muted_role = ctx.guild.get_role(Your Role token)
+  muted_role = ctx.guild.get_role(840877427402997780)
 
   await member.add_roles(muted_role)
 
@@ -101,7 +125,7 @@ async def mute(ctx,member : discord.Member):
 @client.command(aliases=['um'])
 @commands.has_permissions(manage_messages=True)
 async def unmute(ctx,member : discord.Member):
-  muted_role = ctx.guild.get_role(Your Role Token)
+  muted_role = ctx.guild.get_role(840877427402997780)
 
   await member.remove_roles(muted_role)
 
@@ -113,4 +137,4 @@ async def on_ready():
   await client.change_presence(status=discord.Status.do_not_disturb, activity=activity)
   print("Mixie is now Ready!!")
 
-client.run("Your Bot Token")
+client.run("ODM1MDc0MzMyODIwNTA0NjE2.YIKJkw.u-bybmSnwwg26gKjG8rnEsranLg")

@@ -12,7 +12,7 @@ async def on_message(message):
   if client.user == message.author:
      return
 
-  if message.channel.id == (Paste The channel id here):
+  if message.channel.id == 843516891010957322:
     response = await rs.get_ai_response(message.content)
     await message.reply(response)
 
@@ -20,25 +20,25 @@ async def on_message(message):
 
 @client.group(invoke_without_command=True)
 async def help(ctx):
-  em = discord.Embed(title = "Help", descreption = "Use >help <command> for extended information on a command.",color = ctx.author.color)
+  em = discord.Embed(title = "Help❔", descreption = "Use >help <command> for extended information on a command.",color = ctx.author.color)
 
   em.add_field(name = "Moderation", value = " kick , ban , mute , unmute ")
 
-  em.add_field(name = "About", value = " version , support , sourcecode , AboutEm , ChangeLogs     Bot Made By NixonXC")
+  em.add_field(name = "About", value = " version , support , sourcecode , AboutEm , ChangeLogs ")
 
   await ctx.send(embed = em)
 
 @client.group(invoke_without_command=True)
 async def AboutEm(ctx):
-  em = discord.Embed(title = "About", descreption = "Use >help <command> for extended information on a command.",color = ctx.author.color)
+  em = discord.Embed(title = "About❓", descreption = "Use >help <command> for extended information on a command.",color = ctx.author.color)
 
-  em.add_field(name = "Mixie About", value = " support , sourcecode , About , ChangeLogs ")
+  em.add_field(name = "Mixie About", value = " support , sourcecode , About , ChangeLogs ,  developers ")
 
   await ctx.send(embed = em)
 
 @client.command()
 async def ChangeLogs(ctx):
-  await ctx.send("Bug Fixing ")
+  await ctx.send("Bug Fixing,some secrets :),New Embeds ")
 
 @client.command()
 async def About(ctx):
@@ -46,19 +46,31 @@ async def About(ctx):
 
 @client.command()
 async def support(ctx):
-  await ctx.send("Join Our support server - https://discord.gg/RYCYgRnkgP")
+  await ctx.send("Join Our support server - https://discord.gg/RYCYgRnkgP  🍕 ")
 
 @client.command()
 async def sourcecode(ctx):
-  await ctx.send("Join The Server for the GitHub Link :) - https://discord.gg/NpYE3PqvRf and if too many members joined and leaved i will remove the bot from github and i will change the source code :)")
+  await ctx.send("join for the link and to support us :) - https://discord.gg/RYCYgRnkgP  💻 ")
 
 @client.command()
 async def version(ctx):
-  await ctx.send("version - 1.2 Rexo vs <:berified:843507823933653022>")
+  await ctx.send("version - 1.5 Rexo vs ☑")
 
-@client.command()
-async def dev(ctx):
-  await ctx.send("Bot Made By NixonXC <:berified:843507823933653022>")
+@client.group(invoke_without_command=True)
+async def developers(ctx):
+  em = discord.Embed(title = "Developers", descreption = "Use >help <command> for extended information on a command.",color = ctx.author.color)
+
+  em.add_field(name = "Devs", value = " Bot By NixonXC  ✅ ")
+
+  await ctx.send(embed = em)
+
+@client.group(invoke_without_command=True)
+async def website(ctx):
+  em = discord.Embed(title = "Websites", descreption = "Use >help <command> for extended information on a command.",color = ctx.author.color)
+
+  em.add_field(name = "Website", value = "  https://mixie.glitch.me/#commands our offical website 💎 ")
+
+  await ctx.send(embed = em)
 
 @client.command(aliases=['c'])
 @commands.has_permissions(manage_messages = True)
@@ -68,19 +80,19 @@ async def clear(ctx,amount=5):
 @client.command(aliases=['k'])
 @commands.has_permissions(kick_members = True)
 async def kick(ctx,member : discord.Member,*,reason= "Reason Not Provided"):
-  await member.send("You Have Been kicked from Server, Because: "+reason)
+  await member.send("You Have Been kicked from Server🔥  , Because: "+reason)
   await member.kick(reason=reason)
 
 @client.command(aliases=['b'])
 @commands.has_permissions(ban_members = True)
 async def ban(ctx,member : discord.Member,*,reason= "Reason Not Provided"):
-  await ctx.send(member.name + " has Been BANNED from Server, Because: "+reason)
+  await ctx.send(member.name + " has Been BANNED from Server ⚔ , Because: "+reason)
   await member.ban(reason=reason)
 
 @client.command(aliases=['m'])
 @commands.has_permissions(manage_messages=True)
 async def mute(ctx,member : discord.Member):
-  muted_role = ctx.guild.get_role(Create a role called (Muted) and copy and paste the id here)
+  muted_role = ctx.guild.get_role(840877427402997780)
 
   await member.add_roles(muted_role)
 
@@ -89,7 +101,7 @@ async def mute(ctx,member : discord.Member):
 @client.command(aliases=['um'])
 @commands.has_permissions(manage_messages=True)
 async def unmute(ctx,member : discord.Member):
-  muted_role = ctx.guild.get_role(Create a role called (Muted) and copy and paste the id here)
+  muted_role = ctx.guild.get_role(840877427402997780)
 
   await member.remove_roles(muted_role)
 
@@ -101,4 +113,4 @@ async def on_ready():
   await client.change_presence(status=discord.Status.do_not_disturb, activity=activity)
   print("Mixie is now Ready!!")
 
-client.run("Your bot token")
+client.run("ODM1MDc0MzMyODIwNTA0NjE2.YIKJkw.smuFq_jhbLhfzmPsVRBkXi-TkzI")

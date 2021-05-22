@@ -1,46 +1,10 @@
 import discord 
 from discord.ext import commands
-from prsaw import RandomStuff
+from webserver import keep_alive
+import os
 
 client = commands.Bot(command_prefix=">")
 client.remove_command("help")
-
-@client.group(invoke_without_command=True)
-async def verified(ctx):
-  em = discord.Embed(title = "VERIFY✅", descreption = "Use >help <command> for extended information on a command.",color = ctx.author.color)
-
-  em.add_field(name = "Verify That You Are a Real Person", value = " To Verify do >verify @YourName")
-
-  await ctx.send(embed = em)
-
-@client.command(aliases=['v'])
-async def verify(ctx,member : discord.Member):
-  muted_role = ctx.guild.get_role(Your Role id)
-
-  await member.add_roles(muted_role)
-
-  await ctx.send(member.mention + " Is Now Verified")
-
-@client.command(aliases=['uv'])
-async def unverify(ctx,member : discord.Member):
-  muted_role = ctx.guild.get_role(Your Role id)
-
-  await member.remove_roles(muted_role)
-
-  await ctx.send(member.mention + " Is Now UnVerified")
-
-rs  = RandomStuff(async_mode = True)
-
-@client.event
-async def on_message(message):
-  if client.user == message.author:
-     return
-
-  if message.channel.id == Your Channel id:
-    response = await rs.get_ai_response(message.content)
-    await message.reply(response)
-
-  await client.process_commands(message)
 
 @client.group(invoke_without_command=True)
 async def help(ctx):
@@ -62,7 +26,7 @@ async def AboutEm(ctx):
 
 @client.command()
 async def ChangeLogs(ctx):
-  await ctx.send("Bug Fixing,some secrets :),New Embeds ")
+  await ctx.send("Bug Fixing,some secrets :),New Embeds,24/7 BOT BABA BOIIIIIIIIIII ")
 
 @client.command()
 async def About(ctx):
@@ -78,7 +42,7 @@ async def sourcecode(ctx):
 
 @client.command()
 async def version(ctx):
-  await ctx.send("version - 1.5 Rexo vs ☑")
+  await ctx.send("version - 1.18 rektifine Replit ✅")
 
 @client.group(invoke_without_command=True)
 async def developers(ctx):
@@ -116,7 +80,7 @@ async def ban(ctx,member : discord.Member,*,reason= "Reason Not Provided"):
 @client.command(aliases=['m'])
 @commands.has_permissions(manage_messages=True)
 async def mute(ctx,member : discord.Member):
-  muted_role = ctx.guild.get_role(Your Role id)
+  muted_role = ctx.guild.get_role(Your Role ID)
 
   await member.add_roles(muted_role)
 
@@ -125,7 +89,7 @@ async def mute(ctx,member : discord.Member):
 @client.command(aliases=['um'])
 @commands.has_permissions(manage_messages=True)
 async def unmute(ctx,member : discord.Member):
-  muted_role = ctx.guild.get_role(Your Role id)
+  muted_role = ctx.guild.get_role(Your Role ID)
 
   await member.remove_roles(muted_role)
 
@@ -133,8 +97,12 @@ async def unmute(ctx,member : discord.Member):
 
 @client.event
 async def on_ready():
-  activity = discord.Game(name="Mixie |Bot Made by NixonXC >help", type=3)
+  activity = discord.Game(name="ᴍɪxɪᴇ | ɴᴏᴡ 24/7 ʙᴏᴛ ʙʏ ɴɪxᴏɴxᴄ", type=3)
   await client.change_presence(status=discord.Status.do_not_disturb, activity=activity)
   print("Mixie is now Ready!!")
 
-client.run("Your Bot Token")
+keep_alive()
+
+TOKEN = os.environ.get("DISCORD_BOT_SECRET")
+
+client.run(TOKEN)
